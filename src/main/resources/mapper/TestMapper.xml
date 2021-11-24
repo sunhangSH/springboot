@@ -3,7 +3,7 @@
 <mapper namespace="com.meteorxsh.wiki.mapper.TestMapper" >
 
     <select id="list" resultType="com.meteorxsh.wiki.domain.Test">
-        select `id`, `name` from `test`
+        select `id`, `name`,`password` from `test`
     </select>
 
 </mapper>
