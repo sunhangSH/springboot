@@ -1,7 +1,8 @@
 package com.meteorxsh.wiki.controller;
 
-import com.meteorxsh.wiki.domain.Ebook;
-import com.meteorxsh.wiki.resp.CommonResp;
+import com.meteorxsh.wiki.request.EbookRequest;
+import com.meteorxsh.wiki.response.CommonResponse;
+import com.meteorxsh.wiki.response.EbookResponse;
 import com.meteorxsh.wiki.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +24,9 @@ public class EbookController {
     private EbookService ebookService;
 
     @GetMapping("/list")
-    public CommonResp list(){
-        CommonResp<List<Ebook>> resp = new CommonResp<>();
-        List<Ebook> list = ebookService.list();
+    public CommonResponse list(EbookRequest ebookRequest){
+        CommonResponse<List<EbookResponse>> resp = new CommonResponse<>();
+        List<EbookResponse> list = ebookService.list(ebookRequest);
         resp.setContent(list);
         return resp;
     }

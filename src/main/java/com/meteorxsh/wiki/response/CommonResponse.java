@@ -1,10 +1,10 @@
-package com.meteorxsh.wiki.resp;
+package com.meteorxsh.wiki.response;
 
 /**
  * @author shMeteor
  * @create 2021-11-28-20:21
  */
-public class CommonResp<T> {
+public class CommonResponse<T> {
     /**
      * 业务上的成功或失败
      */
