@@ -5,11 +5,10 @@ import com.meteorxsh.wiki.domain.EbookExample;
 import com.meteorxsh.wiki.mapper.EbookMapper;
 import com.meteorxsh.wiki.request.EbookRequest;
 import com.meteorxsh.wiki.response.EbookResponse;
-import org.springframework.beans.BeanUtils;
+import com.meteorxsh.wiki.util.CopyUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,12 +27,17 @@ public class EbookService {
 
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
 
-        List<EbookResponse> responseList = new ArrayList<>();
-        for (Ebook ebook : ebookList) {
-            EbookResponse ebookResponse = new EbookResponse();
-            BeanUtils.copyProperties(ebook, ebookResponse);
-            responseList.add(ebookResponse);
-        }
+//        List<EbookResponse> responseList = new ArrayList<>();
+//        for (Ebook ebook : ebookList) {
+////            EbookResponse ebookResponse = new EbookResponse();
+////            BeanUtils.copyProperties(ebook, ebookResponse);
+                //对象复制
+//              EbookResponse ebookResponse = CopyUtil.copy(ebook, EbookResponse.class);
+//            responseList.add(ebookResponse);
+//        }
+
+        //列表复制
+        List<EbookResponse> responseList = CopyUtil.copyList(ebookList, EbookResponse.class);
         return responseList;
     }
 }
