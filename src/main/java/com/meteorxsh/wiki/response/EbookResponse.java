@@ -108,6 +108,5 @@ public class EbookResponse {
         sb.append(", voteCount=").append(voteCount);
         sb.append("]");
         return sb.toString();
-        //gittest
     }
 }
