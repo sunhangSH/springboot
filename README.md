@@ -8,7 +8,7 @@
 
 - 持久层mybatis
 
-- 前端Vue3
+- 前端Vue3 基于Antd
 
   ------
 
