@@ -126,7 +126,8 @@ export default defineComponent({
           console.log(page);
         },
         pageSize: 3,
-      },actions:[
+      },
+      actions:[
         { type: 'StarOutlined', text: '156' },
         { type: 'LikeOutlined', text: '156' },
         { type: 'MessageOutlined', text: '2' },
