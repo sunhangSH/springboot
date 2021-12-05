@@ -7,6 +7,7 @@ import com.meteorxsh.wiki.request.EbookRequest;
 import com.meteorxsh.wiki.response.EbookResponse;
 import com.meteorxsh.wiki.util.CopyUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -23,8 +24,9 @@ public class EbookService {
     public List<EbookResponse> list(EbookRequest ebookRequest){
         EbookExample ebookExample = new EbookExample();
         EbookExample.Criteria criteria = ebookExample.createCriteria();//类似where 条件
-        criteria.andNameLike("%"+ebookRequest.getName()+"%");
-
+        if (!ObjectUtils.isEmpty(ebookRequest.getName())) {
+            criteria.andNameLike("%" + ebookRequest.getName() + "%");
+        }
         List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
 
 //        List<EbookResponse> responseList = new ArrayList<>();
