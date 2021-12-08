@@ -6,11 +6,10 @@ import com.meteorxsh.wiki.mapper.EbookMapper;
 import com.meteorxsh.wiki.request.EbookRequest;
 import com.meteorxsh.wiki.response.EbookResponse;
 import com.meteorxsh.wiki.util.CopyUtil;
+import java.util.List;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
-
-import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author shMeteor
@@ -18,28 +17,29 @@ import java.util.List;
  */
 @Service
 public class EbookService {
-    @Resource
-    private EbookMapper ebookMapper;
 
-    public List<EbookResponse> list(EbookRequest ebookRequest){
-        EbookExample ebookExample = new EbookExample();
-        EbookExample.Criteria criteria = ebookExample.createCriteria();//类似where 条件
-        if (!ObjectUtils.isEmpty(ebookRequest.getName())) {
-            criteria.andNameLike("%" + ebookRequest.getName() + "%");
-        }
-        List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
+  @Resource
+  private EbookMapper ebookMapper;
+
+  public List<EbookResponse> list(EbookRequest ebookRequest) {
+    EbookExample ebookExample = new EbookExample();
+    EbookExample.Criteria criteria = ebookExample.createCriteria();//类似where 条件
+    if (!ObjectUtils.isEmpty(ebookRequest.getName())) {
+      criteria.andNameLike("%" + ebookRequest.getName() + "%");
+    }
+    List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
 
 //        List<EbookResponse> responseList = new ArrayList<>();
 //        for (Ebook ebook : ebookList) {
 ////            EbookResponse ebookResponse = new EbookResponse();
 ////            BeanUtils.copyProperties(ebook, ebookResponse);
-                //对象复制
+    //对象复制
 //              EbookResponse ebookResponse = CopyUtil.copy(ebook, EbookResponse.class);
 //            responseList.add(ebookResponse);
 //        }
 
-        //列表复制
-        List<EbookResponse> responseList = CopyUtil.copyList(ebookList, EbookResponse.class);
-        return responseList;
-    }
+    //列表复制
+    List<EbookResponse> responseList = CopyUtil.copyList(ebookList, EbookResponse.class);
+    return responseList;
+  }
 }

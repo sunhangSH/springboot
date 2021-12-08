@@ -2,30 +2,31 @@ package com.meteorxsh.wiki.mapper;
 
 import com.meteorxsh.wiki.domain.Ebook;
 import com.meteorxsh.wiki.domain.EbookExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 public interface EbookMapper {
-    long countByExample(EbookExample example);
 
-    int deleteByExample(EbookExample example);
+  long countByExample(EbookExample example);
 
-    int deleteByPrimaryKey(Long id);
+  int deleteByExample(EbookExample example);
 
-    int insert(Ebook record);
+  int deleteByPrimaryKey(Long id);
 
-    int insertSelective(Ebook record);
+  int insert(Ebook record);
 
-    List<Ebook> selectByExample(EbookExample example);
+  int insertSelective(Ebook record);
 
-    Ebook selectByPrimaryKey(Long id);
+  List<Ebook> selectByExample(EbookExample example);
 
-    int updateByExampleSelective(@Param("record") Ebook record, @Param("example") EbookExample example);
+  Ebook selectByPrimaryKey(Long id);
 
-    int updateByExample(@Param("record") Ebook record, @Param("example") EbookExample example);
+  int updateByExampleSelective(@Param("record") Ebook record,
+      @Param("example") EbookExample example);
 
-    int updateByPrimaryKeySelective(Ebook record);
+  int updateByExample(@Param("record") Ebook record, @Param("example") EbookExample example);
 
-    int updateByPrimaryKey(Ebook record);
+  int updateByPrimaryKeySelective(Ebook record);
+
+  int updateByPrimaryKey(Ebook record);
 }

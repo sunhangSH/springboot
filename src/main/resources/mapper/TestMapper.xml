@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.meteorxsh.wiki.mapper.TestMapper" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meteorxsh.wiki.mapper.TestMapper">
 
-    <select id="list" resultType="com.meteorxsh.wiki.domain.Test">
-        select `id`, `name`,`password` from `test`
-    </select>
+  <select id="list" resultType="com.meteorxsh.wiki.domain.Test">
+    select `id`, `name`, `password`
+    from `test`
+  </select>
 
 </mapper>

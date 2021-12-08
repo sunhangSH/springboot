@@ -2,30 +2,30 @@ package com.meteorxsh.wiki.mapper;
 
 import com.meteorxsh.wiki.domain.Demo;
 import com.meteorxsh.wiki.domain.DemoExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
-
 public interface DemoMapper {
-    long countByExample(DemoExample example);
 
-    int deleteByExample(DemoExample example);
+  long countByExample(DemoExample example);
 
-    int deleteByPrimaryKey(Long id);
+  int deleteByExample(DemoExample example);
 
-    int insert(Demo record);
+  int deleteByPrimaryKey(Long id);
 
-    int insertSelective(Demo record);
+  int insert(Demo record);
 
-    List<Demo> selectByExample(DemoExample example);
+  int insertSelective(Demo record);
 
-    Demo selectByPrimaryKey(Long id);
+  List<Demo> selectByExample(DemoExample example);
 
-    int updateByExampleSelective(@Param("record") Demo record, @Param("example") DemoExample example);
+  Demo selectByPrimaryKey(Long id);
 
-    int updateByExample(@Param("record") Demo record, @Param("example") DemoExample example);
+  int updateByExampleSelective(@Param("record") Demo record, @Param("example") DemoExample example);
 
-    int updateByPrimaryKeySelective(Demo record);
+  int updateByExample(@Param("record") Demo record, @Param("example") DemoExample example);
 
-    int updateByPrimaryKey(Demo record);
+  int updateByPrimaryKeySelective(Demo record);
+
+  int updateByPrimaryKey(Demo record);
 }

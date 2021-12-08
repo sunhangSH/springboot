@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.meteorxsh.wiki.mapper.EbookMapper">
   <resultMap id="BaseResultMap" type="com.meteorxsh.wiki.domain.Ebook">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="catagory1_id" jdbcType="BIGINT" property="catagory1Id" />
-    <result column="catagory2_id" jdbcType="BIGINT" property="catagory2Id" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="cover" jdbcType="VARCHAR" property="cover" />
-    <result column="doc_count" jdbcType="INTEGER" property="docCount" />
-    <result column="view_count" jdbcType="INTEGER" property="viewCount" />
-    <result column="vote_count" jdbcType="INTEGER" property="voteCount" />
+    <id column="id" jdbcType="BIGINT" property="id"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="catagory1_id" jdbcType="BIGINT" property="catagory1Id"/>
+    <result column="catagory2_id" jdbcType="BIGINT" property="catagory2Id"/>
+    <result column="description" jdbcType="VARCHAR" property="description"/>
+    <result column="cover" jdbcType="VARCHAR" property="cover"/>
+    <result column="doc_count" jdbcType="INTEGER" property="docCount"/>
+    <result column="view_count" jdbcType="INTEGER" property="viewCount"/>
+    <result column="vote_count" jdbcType="INTEGER" property="voteCount"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -30,7 +31,8 @@
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach close=")" collection="criterion.value" item="listItem" open="("
+                    separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -59,7 +61,8 @@
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach close=")" collection="criterion.value" item="listItem" open="("
+                    separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -71,48 +74,51 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, catagory1_id, catagory2_id, description, cover, doc_count, view_count, 
+    id
+    , `name`, catagory1_id, catagory2_id, description, cover, doc_count, view_count,
     vote_count
   </sql>
-  <select id="selectByExample" parameterType="com.meteorxsh.wiki.domain.EbookExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.meteorxsh.wiki.domain.EbookExample"
+    resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
-    <include refid="Base_Column_List" />
+    <include refid="Base_Column_List"/>
     from ebook
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
+      <include refid="Example_Where_Clause"/>
     </if>
     <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
+    select
+    <include refid="Base_Column_List"/>
     from ebook
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from ebook
+    delete
+    from ebook
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.meteorxsh.wiki.domain.EbookExample">
     delete from ebook
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
+      <include refid="Example_Where_Clause"/>
     </if>
   </delete>
   <insert id="insert" parameterType="com.meteorxsh.wiki.domain.Ebook">
-    insert into ebook (id, `name`, catagory1_id, 
-      catagory2_id, description, cover, 
-      doc_count, view_count, vote_count
-      )
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{catagory1Id,jdbcType=BIGINT}, 
-      #{catagory2Id,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, #{cover,jdbcType=VARCHAR}, 
-      #{docCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, #{voteCount,jdbcType=INTEGER}
-      )
+    insert into ebook (id, `name`, catagory1_id,
+                       catagory2_id, description, cover,
+                       doc_count, view_count, vote_count)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{catagory1Id,jdbcType=BIGINT},
+            #{catagory2Id,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR},
+            #{cover,jdbcType=VARCHAR},
+            #{docCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
+            #{voteCount,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.meteorxsh.wiki.domain.Ebook">
     insert into ebook
@@ -175,10 +181,11 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.meteorxsh.wiki.domain.EbookExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.meteorxsh.wiki.domain.EbookExample"
+    resultType="java.lang.Long">
     select count(*) from ebook
     <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
+      <include refid="Example_Where_Clause"/>
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
@@ -213,22 +220,22 @@
       </if>
     </set>
     <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
+      <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
     update ebook
     set id = #{record.id,jdbcType=BIGINT},
-      `name` = #{record.name,jdbcType=VARCHAR},
-      catagory1_id = #{record.catagory1Id,jdbcType=BIGINT},
-      catagory2_id = #{record.catagory2Id,jdbcType=BIGINT},
-      description = #{record.description,jdbcType=VARCHAR},
-      cover = #{record.cover,jdbcType=VARCHAR},
-      doc_count = #{record.docCount,jdbcType=INTEGER},
-      view_count = #{record.viewCount,jdbcType=INTEGER},
-      vote_count = #{record.voteCount,jdbcType=INTEGER}
+    `name` = #{record.name,jdbcType=VARCHAR},
+    catagory1_id = #{record.catagory1Id,jdbcType=BIGINT},
+    catagory2_id = #{record.catagory2Id,jdbcType=BIGINT},
+    description = #{record.description,jdbcType=VARCHAR},
+    cover = #{record.cover,jdbcType=VARCHAR},
+    doc_count = #{record.docCount,jdbcType=INTEGER},
+    view_count = #{record.viewCount,jdbcType=INTEGER},
+    vote_count = #{record.voteCount,jdbcType=INTEGER}
     <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
+      <include refid="Update_By_Example_Where_Clause"/>
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.meteorxsh.wiki.domain.Ebook">
@@ -263,14 +270,14 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.meteorxsh.wiki.domain.Ebook">
     update ebook
-    set `name` = #{name,jdbcType=VARCHAR},
-      catagory1_id = #{catagory1Id,jdbcType=BIGINT},
-      catagory2_id = #{catagory2Id,jdbcType=BIGINT},
-      description = #{description,jdbcType=VARCHAR},
-      cover = #{cover,jdbcType=VARCHAR},
-      doc_count = #{docCount,jdbcType=INTEGER},
-      view_count = #{viewCount,jdbcType=INTEGER},
-      vote_count = #{voteCount,jdbcType=INTEGER}
+    set `name`       = #{name,jdbcType=VARCHAR},
+        catagory1_id = #{catagory1Id,jdbcType=BIGINT},
+        catagory2_id = #{catagory2Id,jdbcType=BIGINT},
+        description  = #{description,jdbcType=VARCHAR},
+        cover        = #{cover,jdbcType=VARCHAR},
+        doc_count    = #{docCount,jdbcType=INTEGER},
+        view_count   = #{viewCount,jdbcType=INTEGER},
+        vote_count   = #{voteCount,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -2,10 +2,9 @@ package com.meteorxsh.wiki.service;
 
 import com.meteorxsh.wiki.domain.Test;
 import com.meteorxsh.wiki.mapper.TestMapper;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 import java.util.List;
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
 
 /**
  * @author shMeteor
@@ -13,10 +12,11 @@ import java.util.List;
  */
 @Service
 public class TestService {
-    @Resource
-    private TestMapper testMapper;
 
-    public List<Test> list(){
-        return testMapper.list();
-    }
+  @Resource
+  private TestMapper testMapper;
+
+  public List<Test> list() {
+    return testMapper.list();
+  }
 }

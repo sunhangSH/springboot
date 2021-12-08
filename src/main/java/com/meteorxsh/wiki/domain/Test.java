@@ -5,31 +5,32 @@ package com.meteorxsh.wiki.domain;
  * @create 2021-11-24-23:11
  */
 public class Test {
-    private Integer id;
-    private String name;
-    private String password;
 
-    public Integer getId() {
-        return id;
-    }
+  private Integer id;
+  private String name;
+  private String password;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
 }
