@@ -8,7 +8,7 @@
 
 - 持久层mybatis
 
-- 前端Vue3 基于Antd
+- 前端基于Vue3 使用antd组件
 
   ------
 
