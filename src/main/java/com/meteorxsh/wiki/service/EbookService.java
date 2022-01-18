@@ -1,5 +1,7 @@
 package com.meteorxsh.wiki.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.meteorxsh.wiki.domain.Ebook;
 import com.meteorxsh.wiki.domain.EbookExample;
 import com.meteorxsh.wiki.mapper.EbookMapper;
@@ -8,6 +10,8 @@ import com.meteorxsh.wiki.response.EbookResponse;
 import com.meteorxsh.wiki.util.CopyUtil;
 import java.util.List;
 import javax.annotation.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -18,6 +22,7 @@ import org.springframework.util.ObjectUtils;
 @Service
 public class EbookService {
 
+  private static final Logger LOG = LoggerFactory.getLogger(EbookService.class);
   @Resource
   private EbookMapper ebookMapper;
 
@@ -27,7 +32,12 @@ public class EbookService {
     if (!ObjectUtils.isEmpty(ebookRequest.getName())) {
       criteria.andNameLike("%" + ebookRequest.getName() + "%");
     }
+    PageHelper.startPage(1, 3);
     List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
+
+    PageInfo<Ebook> pageInfo = new PageInfo<>(ebookList);
+    LOG.info("总行数:{}", pageInfo.getTotal());
+    LOG.info("总页数:{}", pageInfo.getPages());
 
 //        List<EbookResponse> responseList = new ArrayList<>();
 //        for (Ebook ebook : ebookList) {
