@@ -3,8 +3,8 @@ package com.meteorxsh.wiki.controller;
 import com.meteorxsh.wiki.request.EbookRequest;
 import com.meteorxsh.wiki.response.CommonResponse;
 import com.meteorxsh.wiki.response.EbookResponse;
+import com.meteorxsh.wiki.response.PageResponse;
 import com.meteorxsh.wiki.service.EbookService;
-import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +24,8 @@ public class EbookController {
 
   @GetMapping("/list")
   public CommonResponse list(EbookRequest ebookRequest) {
-    CommonResponse<List<EbookResponse>> resp = new CommonResponse<>();
-    List<EbookResponse> list = ebookService.list(ebookRequest);
+    CommonResponse<PageResponse<EbookResponse>> resp = new CommonResponse<>();
+    PageResponse<EbookResponse> list = ebookService.list(ebookRequest);
     resp.setContent(list);
     return resp;
   }

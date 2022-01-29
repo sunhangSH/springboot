@@ -7,6 +7,7 @@ import com.meteorxsh.wiki.domain.EbookExample;
 import com.meteorxsh.wiki.mapper.EbookMapper;
 import com.meteorxsh.wiki.request.EbookRequest;
 import com.meteorxsh.wiki.response.EbookResponse;
+import com.meteorxsh.wiki.response.PageResponse;
 import com.meteorxsh.wiki.util.CopyUtil;
 import java.util.List;
 import javax.annotation.Resource;
@@ -26,13 +27,13 @@ public class EbookService {
   @Resource
   private EbookMapper ebookMapper;
 
-  public List<EbookResponse> list(EbookRequest ebookRequest) {
+  public PageResponse<EbookResponse> list(EbookRequest ebookRequest) {
     EbookExample ebookExample = new EbookExample();
     EbookExample.Criteria criteria = ebookExample.createCriteria();//类似where 条件
     if (!ObjectUtils.isEmpty(ebookRequest.getName())) {
       criteria.andNameLike("%" + ebookRequest.getName() + "%");
     }
-    PageHelper.startPage(1, 3);
+    PageHelper.startPage(ebookRequest.getPage(), ebookRequest.getPageSize());
     List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
 
     PageInfo<Ebook> pageInfo = new PageInfo<>(ebookList);
@@ -47,9 +48,11 @@ public class EbookService {
 //              EbookResponse ebookResponse = CopyUtil.copy(ebook, EbookResponse.class);
 //            responseList.add(ebookResponse);
 //        }
-
     //列表复制
     List<EbookResponse> responseList = CopyUtil.copyList(ebookList, EbookResponse.class);
-    return responseList;
+    PageResponse<EbookResponse> pageResp = new PageResponse<>();
+    pageResp.setTotal((int) pageInfo.getTotal());
+    pageResp.setList(responseList);
+    return pageResp;
   }
 }

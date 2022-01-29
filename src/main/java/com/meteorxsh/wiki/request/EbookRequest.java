@@ -1,6 +1,6 @@
 package com.meteorxsh.wiki.request;
 
-public class EbookRequest {
+public class EbookRequest extends PageRequest {
 
   private Long id;
 
