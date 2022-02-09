@@ -1,12 +1,15 @@
 package com.meteorxsh.wiki.controller;
 
-import com.meteorxsh.wiki.request.EbookRequest;
+import com.meteorxsh.wiki.request.EbookQueryRequest;
+import com.meteorxsh.wiki.request.EbookSaveRequest;
 import com.meteorxsh.wiki.response.CommonResponse;
-import com.meteorxsh.wiki.response.EbookResponse;
+import com.meteorxsh.wiki.response.EbookQueryResponse;
 import com.meteorxsh.wiki.response.PageResponse;
 import com.meteorxsh.wiki.service.EbookService;
 import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,10 +26,19 @@ public class EbookController {
   private EbookService ebookService;
 
   @GetMapping("/list")
-  public CommonResponse list(EbookRequest ebookRequest) {
-    CommonResponse<PageResponse<EbookResponse>> resp = new CommonResponse<>();
-    PageResponse<EbookResponse> list = ebookService.list(ebookRequest);
+  public CommonResponse list(EbookQueryRequest ebookRequest) {
+    CommonResponse<PageResponse<EbookQueryResponse>> resp = new CommonResponse<>();
+    PageResponse<EbookQueryResponse> list = ebookService.list(ebookRequest);
     resp.setContent(list);
+    return resp;
+  }
+
+  @PostMapping("/save")
+  public CommonResponse save(
+      @RequestBody EbookSaveRequest ebookRequest
+  ) {
+    CommonResponse resp = new CommonResponse<>();
+    ebookService.save(ebookRequest);
     return resp;
   }
 }

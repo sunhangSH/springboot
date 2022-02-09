@@ -1,6 +1,6 @@
-package com.meteorxsh.wiki.domain;
+package com.meteorxsh.wiki.response;
 
-public class Ebook {
+public class EbookQueryResponse {
 
   private Long id;
 

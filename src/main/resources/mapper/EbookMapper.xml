@@ -5,8 +5,8 @@
   <resultMap id="BaseResultMap" type="com.meteorxsh.wiki.domain.Ebook">
     <id column="id" jdbcType="BIGINT" property="id"/>
     <result column="name" jdbcType="VARCHAR" property="name"/>
-    <result column="catagory1_id" jdbcType="BIGINT" property="catagory1Id"/>
-    <result column="catagory2_id" jdbcType="BIGINT" property="catagory2Id"/>
+    <result column="category1_id" jdbcType="BIGINT" property="category1Id"/>
+    <result column="category2_id" jdbcType="BIGINT" property="category2Id"/>
     <result column="description" jdbcType="VARCHAR" property="description"/>
     <result column="cover" jdbcType="VARCHAR" property="cover"/>
     <result column="doc_count" jdbcType="INTEGER" property="docCount"/>
@@ -75,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List">
     id
-    , `name`, catagory1_id, catagory2_id, description, cover, doc_count, view_count,
+    , `name`, category1_id, category2_id, description, cover, doc_count, view_count,
     vote_count
   </sql>
   <select id="selectByExample" parameterType="com.meteorxsh.wiki.domain.EbookExample"
@@ -111,11 +111,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.meteorxsh.wiki.domain.Ebook">
-    insert into ebook (id, `name`, catagory1_id,
-                       catagory2_id, description, cover,
+    insert into ebook (id, `name`, category1_id,
+                       category2_id, description, cover,
                        doc_count, view_count, vote_count)
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{catagory1Id,jdbcType=BIGINT},
-            #{catagory2Id,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR},
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{category1Id,jdbcType=BIGINT},
+            #{category2Id,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR},
             #{cover,jdbcType=VARCHAR},
             #{docCount,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER},
             #{voteCount,jdbcType=INTEGER})
@@ -129,11 +129,11 @@
       <if test="name != null">
         `name`,
       </if>
-      <if test="catagory1Id != null">
-        catagory1_id,
+      <if test="category1Id != null">
+        category1_id,
       </if>
-      <if test="catagory2Id != null">
-        catagory2_id,
+      <if test="category2Id != null">
+        category2_id,
       </if>
       <if test="description != null">
         description,
@@ -158,11 +158,11 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="catagory1Id != null">
-        #{catagory1Id,jdbcType=BIGINT},
+      <if test="category1Id != null">
+        #{category1Id,jdbcType=BIGINT},
       </if>
-      <if test="catagory2Id != null">
-        #{catagory2Id,jdbcType=BIGINT},
+      <if test="category2Id != null">
+        #{category2Id,jdbcType=BIGINT},
       </if>
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
@@ -197,11 +197,11 @@
       <if test="record.name != null">
         `name` = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.catagory1Id != null">
-        catagory1_id = #{record.catagory1Id,jdbcType=BIGINT},
+      <if test="record.category1Id != null">
+        category1_id = #{record.category1Id,jdbcType=BIGINT},
       </if>
-      <if test="record.catagory2Id != null">
-        catagory2_id = #{record.catagory2Id,jdbcType=BIGINT},
+      <if test="record.category2Id != null">
+        category2_id = #{record.category2Id,jdbcType=BIGINT},
       </if>
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
@@ -227,8 +227,8 @@
     update ebook
     set id = #{record.id,jdbcType=BIGINT},
     `name` = #{record.name,jdbcType=VARCHAR},
-    catagory1_id = #{record.catagory1Id,jdbcType=BIGINT},
-    catagory2_id = #{record.catagory2Id,jdbcType=BIGINT},
+    category1_id = #{record.category1Id,jdbcType=BIGINT},
+    category2_id = #{record.category2Id,jdbcType=BIGINT},
     description = #{record.description,jdbcType=VARCHAR},
     cover = #{record.cover,jdbcType=VARCHAR},
     doc_count = #{record.docCount,jdbcType=INTEGER},
@@ -244,11 +244,11 @@
       <if test="name != null">
         `name` = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="catagory1Id != null">
-        catagory1_id = #{catagory1Id,jdbcType=BIGINT},
+      <if test="category1Id != null">
+        category1_id = #{category1Id,jdbcType=BIGINT},
       </if>
-      <if test="catagory2Id != null">
-        catagory2_id = #{catagory2Id,jdbcType=BIGINT},
+      <if test="category2Id != null">
+        category2_id = #{category2Id,jdbcType=BIGINT},
       </if>
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
@@ -271,8 +271,8 @@
   <update id="updateByPrimaryKey" parameterType="com.meteorxsh.wiki.domain.Ebook">
     update ebook
     set `name`       = #{name,jdbcType=VARCHAR},
-        catagory1_id = #{catagory1Id,jdbcType=BIGINT},
-        catagory2_id = #{catagory2Id,jdbcType=BIGINT},
+        category1_id = #{category1Id,jdbcType=BIGINT},
+        category2_id = #{category2Id,jdbcType=BIGINT},
         description  = #{description,jdbcType=VARCHAR},
         cover        = #{cover,jdbcType=VARCHAR},
         doc_count    = #{docCount,jdbcType=INTEGER},

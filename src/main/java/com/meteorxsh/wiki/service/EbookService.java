@@ -5,8 +5,9 @@ import com.github.pagehelper.PageInfo;
 import com.meteorxsh.wiki.domain.Ebook;
 import com.meteorxsh.wiki.domain.EbookExample;
 import com.meteorxsh.wiki.mapper.EbookMapper;
-import com.meteorxsh.wiki.request.EbookRequest;
-import com.meteorxsh.wiki.response.EbookResponse;
+import com.meteorxsh.wiki.request.EbookQueryRequest;
+import com.meteorxsh.wiki.request.EbookSaveRequest;
+import com.meteorxsh.wiki.response.EbookQueryResponse;
 import com.meteorxsh.wiki.response.PageResponse;
 import com.meteorxsh.wiki.util.CopyUtil;
 import java.util.List;
@@ -27,7 +28,7 @@ public class EbookService {
   @Resource
   private EbookMapper ebookMapper;
 
-  public PageResponse<EbookResponse> list(EbookRequest ebookRequest) {
+  public PageResponse<EbookQueryResponse> list(EbookQueryRequest ebookRequest) {
     EbookExample ebookExample = new EbookExample();
     EbookExample.Criteria criteria = ebookExample.createCriteria();//类似where 条件
     if (!ObjectUtils.isEmpty(ebookRequest.getName())) {
@@ -49,10 +50,26 @@ public class EbookService {
 //            responseList.add(ebookResponse);
 //        }
     //列表复制
-    List<EbookResponse> responseList = CopyUtil.copyList(ebookList, EbookResponse.class);
-    PageResponse<EbookResponse> pageResp = new PageResponse<>();
+    List<EbookQueryResponse> responseList = CopyUtil.copyList(ebookList, EbookQueryResponse.class);
+    PageResponse<EbookQueryResponse> pageResp = new PageResponse<>();
     pageResp.setTotal((int) pageInfo.getTotal());
     pageResp.setList(responseList);
     return pageResp;
+  }
+
+  /**
+   * 保存
+   *
+   * @param ebookSaveRequest
+   */
+  public void save(EbookSaveRequest ebookSaveRequest) {
+    Ebook ebook = CopyUtil.copy(ebookSaveRequest, Ebook.class);
+    if (ObjectUtils.isEmpty(ebookSaveRequest.getId())) {
+      //新增
+      ebookMapper.insert(ebook);
+    } else {
+      //更新
+      ebookMapper.updateByPrimaryKey(ebook);
+    }
   }
 }

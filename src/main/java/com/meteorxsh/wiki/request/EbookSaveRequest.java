@@ -1,14 +1,14 @@
-package com.meteorxsh.wiki.response;
+package com.meteorxsh.wiki.request;
 
-public class EbookResponse {
+public class EbookSaveRequest {
 
   private Long id;
 
   private String name;
 
-  private Long catagory1Id;
+  private Long category1Id;
 
-  private Long catagory2Id;
+  private Long category2Id;
 
   private String description;
 
@@ -36,20 +36,20 @@ public class EbookResponse {
     this.name = name;
   }
 
-  public Long getCatagory1Id() {
-    return catagory1Id;
+  public Long getcategory1Id() {
+    return category1Id;
   }
 
-  public void setCatagory1Id(Long catagory1Id) {
-    this.catagory1Id = catagory1Id;
+  public void setcategory1Id(Long category1Id) {
+    this.category1Id = category1Id;
   }
 
-  public Long getCatagory2Id() {
-    return catagory2Id;
+  public Long getcategory2Id() {
+    return category2Id;
   }
 
-  public void setCatagory2Id(Long catagory2Id) {
-    this.catagory2Id = catagory2Id;
+  public void setcategory2Id(Long category2Id) {
+    this.category2Id = category2Id;
   }
 
   public String getDescription() {
@@ -100,8 +100,8 @@ public class EbookResponse {
     sb.append("Hash = ").append(hashCode());
     sb.append(", id=").append(id);
     sb.append(", name=").append(name);
-    sb.append(", catagory1Id=").append(catagory1Id);
-    sb.append(", catagory2Id=").append(catagory2Id);
+    sb.append(", category1Id=").append(category1Id);
+    sb.append(", category2Id=").append(category2Id);
     sb.append(", description=").append(description);
     sb.append(", cover=").append(cover);
     sb.append(", docCount=").append(docCount);
